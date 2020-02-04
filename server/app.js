@@ -9,16 +9,9 @@ const config = require('./config');
 const cors = require('cors')
 
 mongoose.connect(config.mongoConnectionString);
-const PORT = 6969;
+const PORT =process.env.PORT || 6969;
 
 const app = express();
-// app.use((req, res, next)=>{
-//   if(req.headers.origin){
-//     res.setHeader("Access-Control-Allow-Origin",req.headers.origin);
-//   }
-//   req.setHeader("Access-Control-Allow-Origin",true);
-//   next();
-// });
 app.use(cors());
 app.use(bodyParser.json());
 app.use('/', express.static('../client'));
