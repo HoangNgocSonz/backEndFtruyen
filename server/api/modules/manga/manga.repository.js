@@ -38,7 +38,11 @@ const MangaSchema = mongoose.Schema({
         default:0
     },
     date:Date,
-    anotherName:String,
+    anotherName:[
+        {
+            type:String,
+        }
+    ],
     status:{
         type:String,
         default:'đang tiến hành',
