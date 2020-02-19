@@ -1,23 +1,23 @@
 const repository = require('./manga.repository');
 const authService = require('../auth/auth.service');
 
-// const find = async function (user,query) {
-//     const auth = authService.authorization(user,["user","admin"]);
-//     if(auth){
-//         const data = await repository.find(query);
-//         const total = await repository.count(query);
-//         return {
-//           data: data,
-//           total: total,
-//         }
-//     }else{
-//         throw new Error("err in function find, manga.service");
-//     }  
-// }
-
-const find = async function(query){
-    return await repository.find(query);
+const find = async function (user,query) {
+    const auth = authService.authorization(user,["user","admin"]);
+    if(auth){
+        const data = await repository.find(query);
+        const total = await repository.count(query);
+        return {
+          data: data,
+          total: total,
+        }
+    }else{
+        throw new Error("err in function find, manga.service");
+    }  
 }
+
+// const find = async function(query){
+//     return await repository.find(query);
+// }
 
 const findById = async function(id){
     return await repository.findById(id);

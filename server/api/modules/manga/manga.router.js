@@ -3,22 +3,9 @@ const router = express.Router();
 const service = require('./manga.service');
 const authService = require('../auth/auth.service');
 
-// router.get('/',authService.authentication, async function (req, res) {
-//     try {
-//       const data = await service.find(req.user,req.query);
-//       res.status(200).send({
-//         data:data,
-//     });
-//     } catch (err) {
-//       res.status(500).send({
-//         error: err.message,
-//       })
-//     }
-//   });
-
-router.get('/', async function (req, res) {
+router.get('/',authService.authentication, async function (req, res) {
     try {
-      const data = await service.find(req.query);
+      const data = await service.find(req.user,req.query);
       res.status(200).send({
         data:data,
     });
@@ -28,6 +15,19 @@ router.get('/', async function (req, res) {
       })
     }
   });
+
+// router.get('/', async function (req, res) {
+//     try {
+//       const data = await service.find(req.query);
+//       res.status(200).send({
+//         data:data,
+//     });
+//     } catch (err) {
+//       res.status(500).send({
+//         error: err.message,
+//       })
+//     }
+//   });
 
 
 router.post('/',async function(req,res){
