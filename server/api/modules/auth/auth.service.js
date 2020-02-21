@@ -61,22 +61,26 @@ const authentication =async function (req, res, next){
         const token = req.headers.authorization;
     
         if(!token){
+            alert("bạn cần đăng nhập");
             res.status(401).send("bạn cần đăng nhập");
         }
         data =await jwt.verify(token, config.privateKey);
         console.log(data);
         if(!data){
+            alert("bạn cần đăng nhập");
             res.status(401).send("bạn cần đăng nhập");
         }
 
         if(data){
             if(data.exp <=Date.now()/1000){
+                alert("hết phiên đăng nhập");
                 res.status(401).send("hết phiên đăng nhập");
             }
         }
         req.user=data;
         next();
     }catch(err){
+        alert("err");
         res.status(401).send("unauthentication o");
     }
     
