@@ -16,7 +16,7 @@ const authService = require('../auth/auth.service');
 //     }
 //   });
 
-router.get('/', async function (req, res) {
+router.get('/',authService.authentication, async function (req, res) {
     try {
       const data = await service.find(req.query);
       res.status(200).send({
