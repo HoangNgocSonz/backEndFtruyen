@@ -56,7 +56,7 @@ router.put('/:id',async function(req,res){
 
 router.put('/',authService.authentication,async function(req,res){
     try{
-        const data = await service.update(req.user.id,req.body);
+        const data = await service.update(req.user._id,req.body);
         res.status(200).send({
             data:data,
         })
