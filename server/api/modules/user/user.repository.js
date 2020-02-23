@@ -42,6 +42,9 @@ const create = async function(data){
 }
 
 const update = async function(id,data){
+    if(data.mangaFolow){
+        return await UserModel.findByIdAndUpdate(id,{$addToSet:data},{new:true});
+    }else
     return await UserModel.findByIdAndUpdate(id,{$set:data},{new:true});
 }
 const  deleteOne = async function(id){

@@ -53,6 +53,19 @@ router.put('/:id',async function(req,res){
     }
 })
 
+router.put('/',authService.authentication,async function(req,res){
+    try{
+        const data = await service.update(req.user.id,req.body);
+        res.status(200).send({
+            data:data,
+        })
+    }catch(err){
+        res.status(500).send({
+            error:err.message,
+        })
+    }
+})
+
 router.delete('/:id',async function(req,res){
     try{
         const data = await service.delete(req.params.id);
