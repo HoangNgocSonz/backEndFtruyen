@@ -1,4 +1,5 @@
 const repository = require('./user.repository');
+const authService = require('../auth/auth.service');
 
 const find = async function (query) {
     const data = await repository.find(query);
