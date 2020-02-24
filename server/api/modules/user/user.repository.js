@@ -24,7 +24,7 @@ const find = async function (query) {
     if ( limit && skip !== undefined ) {
       return await UserModel.find(query).limit(limit).skip(skip);
     } else {
-      return await UserModel.find(query);
+      return await UserModel.find(query).populate("mangaFolow");
     }
   }
   
