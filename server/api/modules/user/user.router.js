@@ -3,9 +3,9 @@ const router = express.Router();
 const service = require('./user.service');
 const authService = require('../auth/auth.service');
 
-router.get('/', async function (req, res) {
+router.get('/',authService.authentication, async function (req, res) {
     try {
-      const data = await service.find(req.query);
+      const data = await service.findById(req.user._id,req.query);
       
       res.status(200).send(data);
     } catch (err) {
