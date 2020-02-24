@@ -33,7 +33,7 @@ const count = async function (query) {
 }
 
 const findById = async function(id){
-    return await UserModel.findById(id);
+    return await UserModel.findById(id).populate("mangaFolow");
 }
 
 const create = async function(data){
