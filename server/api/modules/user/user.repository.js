@@ -24,7 +24,7 @@ const find = async function (query) {
     if ( limit && skip !== undefined ) {
       return await UserModel.find(query).limit(limit).skip(skip);
     } else {
-      return await UserModel.find(query).populate("mangaFolow");
+      return await UserModel.find(query);
     }
   }
   
@@ -33,7 +33,7 @@ const count = async function (query) {
 }
 
 const findById = async function(id){
-    return await UserModel.findById(id).populate("mangaFolow");
+    return await UserModel.findById(id);
 }
 
 const create = async function(data){
